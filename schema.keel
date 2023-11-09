@@ -1,0 +1,31 @@
+model Conference {
+    fields {
+        name Text
+        photoUrl Text?
+        description Text?
+        startDate Date
+        endDate Date?
+        city Text
+        country Text
+        url Text?
+    }
+
+    @permission(
+        actions: [get],
+        expression: ctx.isAuthenticated
+    )
+}
+
+model User {
+    fields {
+        name Text
+        photoUrl Text?
+        identityRecord Identity
+    }
+
+    actions {
+        create createUser() with (name) {
+            @set(user.identityRecord = ctx.identity)
+        }
+    }
+}
