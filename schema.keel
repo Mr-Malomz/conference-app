@@ -28,4 +28,9 @@ model User {
             @set(user.identityRecord = ctx.identity)
         }
     }
+
+    @permission(
+        actions: [create],
+        expression: ctx.isAuthenticated
+    )
 }
