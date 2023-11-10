@@ -20,7 +20,7 @@ model User {
     fields {
         name Text
         photoUrl Text?
-        identityRecord Identity
+        identityRecord Identity?
     }
 
     actions {
